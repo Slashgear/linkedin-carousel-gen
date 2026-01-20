@@ -77,8 +77,24 @@ export function Title({
       </h1>
     );
   }
-
-  const parts = children.split(highlight);
+  const idx = children.indexOf(highlight);
+  if (idx === -1) {
+    return (
+      <h1
+        style={{
+          fontSize: 64,
+          fontWeight: 700,
+          margin: 0,
+          lineHeight: 1.2,
+          ...style,
+        }}
+      >
+        {children}
+      </h1>
+    );
+  }
+  const before = children.slice(0, idx);
+  const after = children.slice(idx + highlight.length);
   return (
     <h1
       style={{
@@ -88,12 +104,13 @@ export function Title({
         lineHeight: 1.2,
         display: "flex",
         flexWrap: "wrap",
+        whiteSpace: "pre-wrap",
         ...style,
       }}
     >
-      {parts[0]}
+      <span>{before}</span>
       <span style={{ color: colors.accent }}>{highlight}</span>
-      {parts[1]}
+      <span>{after}</span>
     </h1>
   );
 }
@@ -146,13 +163,18 @@ export function StatBox({
 // Check list item
 export function CheckItem({ children, highlight }: { children: string; highlight?: string }) {
   const renderText = () => {
-    if (!highlight) return children;
-    const parts = children.split(highlight);
+    if (!highlight) return <span>{children}</span>;
+    const idx = children.indexOf(highlight);
+    if (idx === -1) return <span>{children}</span>;
+    const before = children.slice(0, idx);
+    const after = children.slice(idx + highlight.length);
+    // Use template string to preserve spaces
     return (
-      <>
+      <span>
+        {before}
         <span style={{ color: colors.accent, fontWeight: 700 }}>{highlight}</span>
-        {parts[1]}
-      </>
+        {after}
+      </span>
     );
   };
 
