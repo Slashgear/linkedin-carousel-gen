@@ -89,9 +89,7 @@ export function VeilleSlide1() {
 export function VeilleSlide2() {
   return (
     <Slide style={{ justifyContent: "center" }}>
-      <Title style={{ marginBottom: 40 }}>
-        Tu passes combien de temps à faire ta veille ?
-      </Title>
+      <Title style={{ marginBottom: 40 }}>Tu passes combien de temps à faire ta veille ?</Title>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <div
           style={{
@@ -212,9 +210,7 @@ export function VeilleSlide5() {
         <img src={logoBase64} alt="LyonJS" style={{ height: 100 }} />
       </div>
       <Title style={{ textAlign: "center", marginBottom: 16 }}>Tu veux tester ?</Title>
-      <Subtitle style={{ textAlign: "center" }}>
-        Lien dans le premier commentaire
-      </Subtitle>
+      <Subtitle style={{ textAlign: "center" }}>Lien dans le premier commentaire</Subtitle>
     </Slide>
   );
 }
