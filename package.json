@@ -1,0 +1,26 @@
+{
+  "name": "linkekin-carousel-gen",
+  "type": "module",
+  "module": "index.ts",
+  "scripts": {
+    "generate": "bun run index.ts",
+    "lint": "oxlint",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check ."
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/react": "^19.2.9",
+    "pdf-lib": "^1.17.1",
+    "react": "^19.2.3",
+    "satori": "^0.19.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
