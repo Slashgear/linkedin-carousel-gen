@@ -4,6 +4,7 @@
   "module": "index.ts",
   "scripts": {
     "generate": "bun run index.ts",
+    "typecheck": "tsc --noEmit",
     "lint": "oxlint",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check ."
@@ -18,9 +19,7 @@
   "devDependencies": {
     "@types/bun": "latest",
     "oxfmt": "^0.26.0",
-    "oxlint": "^1.41.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
+    "oxlint": "^1.41.0",
+    "typescript": "^5.9.3"
   }
 }

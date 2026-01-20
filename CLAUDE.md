@@ -13,6 +13,7 @@ Tool to generate LinkedIn carousel posts as PDFs. Built with React + Satori for 
 ```bash
 bun install          # Install dependencies
 bun run generate     # Generate carousel PDF from index.ts
+bun run typecheck    # Type check with tsc
 bun run lint         # Run oxlint
 bun run format       # Format code with oxfmt
 bun run format:check # Check formatting without writing

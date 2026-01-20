@@ -1,4 +1,4 @@
-import satori from "satori";
+import satori, { type FontWeight } from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import { PDFDocument } from "pdf-lib";
 import type { ReactNode } from "react";
@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 const SLIDE_WIDTH = 1080;
 const SLIDE_HEIGHT = 1080;
 
-let fontsLoaded: { name: string; data: ArrayBuffer; weight: number }[] | null = null;
+let fontsLoaded: { name: string; data: ArrayBuffer; weight: FontWeight }[] | null = null;
 
 async function loadFonts() {
   if (fontsLoaded) return fontsLoaded;
@@ -17,8 +17,8 @@ async function loadFonts() {
   ]);
 
   fontsLoaded = [
-    { name: "Inter", data: interRegular, weight: 400 },
-    { name: "Inter", data: interBold, weight: 700 },
+    { name: "Inter", data: interRegular, weight: 400 as FontWeight },
+    { name: "Inter", data: interBold, weight: 700 as FontWeight },
   ];
 
   return fontsLoaded;
