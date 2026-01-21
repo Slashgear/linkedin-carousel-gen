@@ -1,3 +1,2 @@
 assets/*.jpeg filter=lfs diff=lfs merge=lfs -text lockable
 assets/*.png filter=lfs diff=lfs merge=lfs -text lockable
-assets/fonts/*.ttf filter=lfs diff=lfs merge=lfs -text
