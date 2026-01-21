@@ -27,3 +27,12 @@ jobs:
 
       - name: Format check
         run: bun run format:check
+
+      - name: Build Storybook
+        run: bun run build-storybook
+
+      - name: Build example carousels (E2E)
+        run: |
+          bun run examples/tips-carousel.tsx
+          bun run examples/product-launch.tsx
+          bun run examples/event-promo.tsx

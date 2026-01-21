@@ -1,17 +1,20 @@
 import type { CSSProperties, ReactNode } from "react";
+import type { Theme } from "../theme";
+import { defaultTheme } from "../theme";
 
-// Design tokens
-export const colors = {
-  background: "#1a1a1a",
-  surface: "#2a2a2a",
-  accent: "#f5c518",
-  text: "#ffffff",
-  textMuted: "#a0a0a0",
-  border: "#f5c518",
-};
+// Legacy colors export for backward compatibility
+export const colors = defaultTheme.colors;
 
 // Base slide wrapper
-export function Slide({ children, style }: { children: ReactNode; style?: CSSProperties }) {
+export function Slide({
+  children,
+  style,
+  theme = defaultTheme,
+}: {
+  children: ReactNode;
+  style?: CSSProperties;
+  theme?: Theme;
+}) {
   return (
     <div
       style={{
@@ -19,10 +22,10 @@ export function Slide({ children, style }: { children: ReactNode; style?: CSSPro
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        backgroundColor: colors.background,
-        color: colors.text,
-        fontFamily: "Inter",
-        padding: 60,
+        backgroundColor: theme.colors.background,
+        color: theme.colors.text,
+        fontFamily: theme.typography.fontFamily,
+        padding: theme.spacing.slidePadding,
         ...style,
       }}
     >
@@ -32,18 +35,26 @@ export function Slide({ children, style }: { children: ReactNode; style?: CSSPro
 }
 
 // Badge component (like LyonJS badge)
-export function Badge({ children, style }: { children: ReactNode; style?: CSSProperties }) {
+export function Badge({
+  children,
+  style,
+  theme = defaultTheme,
+}: {
+  children: ReactNode;
+  style?: CSSProperties;
+  theme?: Theme;
+}) {
   return (
     <div
       style={{
         display: "flex",
         alignItems: "center",
-        backgroundColor: colors.accent,
+        backgroundColor: theme.colors.accent,
         color: "#000",
         padding: "12px 24px",
-        borderRadius: 8,
+        borderRadius: theme.radii.md,
         fontWeight: 700,
-        fontSize: 24,
+        fontSize: theme.typography.fontSizeSm,
         ...style,
       }}
     >
@@ -57,73 +68,66 @@ export function Title({
   children,
   highlight,
   style,
+  theme = defaultTheme,
 }: {
   children: string;
   highlight?: string;
   style?: CSSProperties;
+  theme?: Theme;
 }) {
+  const baseStyle: CSSProperties = {
+    fontSize: theme.typography.fontSizeXl,
+    fontWeight: 700,
+    margin: 0,
+    lineHeight: 1.2,
+    ...style,
+  };
+
   if (!highlight) {
-    return (
-      <h1
-        style={{
-          fontSize: 64,
-          fontWeight: 700,
-          margin: 0,
-          lineHeight: 1.2,
-          ...style,
-        }}
-      >
-        {children}
-      </h1>
-    );
+    return <h1 style={baseStyle}>{children}</h1>;
   }
+
   const idx = children.indexOf(highlight);
   if (idx === -1) {
-    return (
-      <h1
-        style={{
-          fontSize: 64,
-          fontWeight: 700,
-          margin: 0,
-          lineHeight: 1.2,
-          ...style,
-        }}
-      >
-        {children}
-      </h1>
-    );
+    return <h1 style={baseStyle}>{children}</h1>;
   }
+
   const before = children.slice(0, idx);
   const after = children.slice(idx + highlight.length);
+
   return (
     <h1
       style={{
-        fontSize: 64,
-        fontWeight: 700,
-        margin: 0,
-        lineHeight: 1.2,
+        ...baseStyle,
         display: "flex",
         flexWrap: "wrap",
         whiteSpace: "pre-wrap",
-        ...style,
       }}
     >
       <span>{before}</span>
-      <span style={{ color: colors.accent }}>{highlight}</span>
+      <span style={{ color: theme.colors.accent }}>{highlight}</span>
       <span>{after}</span>
     </h1>
   );
 }
 
 // Subtitle/description text
-export function Subtitle({ children, style }: { children: ReactNode; style?: CSSProperties }) {
+export function Subtitle({
+  children,
+  style,
+  theme = defaultTheme,
+}: {
+  children: ReactNode;
+  style?: CSSProperties;
+  theme?: Theme;
+}) {
   return (
     <p
       style={{
-        fontSize: 32,
-        color: colors.textMuted,
+        fontSize: theme.typography.fontSizeMd,
+        color: theme.colors.textMuted,
         margin: 0,
-        marginTop: 16,
+        marginTop: theme.spacing.sm,
         ...style,
       }}
     >
@@ -137,42 +141,61 @@ export function StatBox({
   value,
   label,
   style,
+  theme = defaultTheme,
 }: {
   value: string;
   label: string;
   style?: CSSProperties;
+  theme?: Theme;
 }) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: colors.surface,
-        border: `2px solid ${colors.border}`,
+        backgroundColor: theme.colors.surface,
+        border: `2px solid ${theme.colors.border}`,
         borderRadius: 12,
         padding: "24px 40px",
         ...style,
       }}
     >
-      <span style={{ fontSize: 48, fontWeight: 700, color: colors.accent }}>{value}</span>
-      <span style={{ fontSize: 24, color: colors.text }}>{label}</span>
+      <span
+        style={{
+          fontSize: theme.typography.fontSizeLg,
+          fontWeight: 700,
+          color: theme.colors.accent,
+        }}
+      >
+        {value}
+      </span>
+      <span style={{ fontSize: theme.typography.fontSizeSm, color: theme.colors.text }}>
+        {label}
+      </span>
     </div>
   );
 }
 
 // Check list item
-export function CheckItem({ children, highlight }: { children: string; highlight?: string }) {
+export function CheckItem({
+  children,
+  highlight,
+  theme = defaultTheme,
+}: {
+  children: string;
+  highlight?: string;
+  theme?: Theme;
+}) {
   const renderText = () => {
     if (!highlight) return <span>{children}</span>;
     const idx = children.indexOf(highlight);
     if (idx === -1) return <span>{children}</span>;
     const before = children.slice(0, idx);
     const after = children.slice(idx + highlight.length);
-    // Use template string to preserve spaces
     return (
       <span>
         {before}
-        <span style={{ color: colors.accent, fontWeight: 700 }}>{highlight}</span>
+        <span style={{ color: theme.colors.accent, fontWeight: 700 }}>{highlight}</span>
         {after}
       </span>
     );
@@ -183,11 +206,11 @@ export function CheckItem({ children, highlight }: { children: string; highlight
       style={{
         display: "flex",
         alignItems: "center",
-        backgroundColor: colors.surface,
-        border: `1px solid ${colors.border}`,
+        backgroundColor: theme.colors.surface,
+        border: `1px solid ${theme.colors.border}`,
         borderRadius: 12,
         padding: "20px 32px",
-        marginBottom: 16,
+        marginBottom: theme.spacing.sm,
       }}
     >
       <div
@@ -198,9 +221,9 @@ export function CheckItem({ children, highlight }: { children: string; highlight
           width: 40,
           height: 40,
           borderRadius: 20,
-          backgroundColor: colors.accent,
+          backgroundColor: theme.colors.accent,
           marginRight: 20,
-          fontSize: 24,
+          fontSize: theme.typography.fontSizeSm,
         }}
       >
         ✓
@@ -215,10 +238,12 @@ export function CTABox({
   title,
   url,
   style,
+  theme = defaultTheme,
 }: {
   title: string;
   url: string;
   style?: CSSProperties;
+  theme?: Theme;
 }) {
   return (
     <div
@@ -226,20 +251,20 @@ export function CTABox({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        backgroundColor: colors.surface,
-        border: `2px solid ${colors.border}`,
-        borderRadius: 16,
+        backgroundColor: theme.colors.surface,
+        border: `2px solid ${theme.colors.border}`,
+        borderRadius: theme.radii.lg,
         padding: "32px 48px",
         ...style,
       }}
     >
       <span
         style={{
-          fontSize: 24,
-          color: colors.accent,
+          fontSize: theme.typography.fontSizeSm,
+          color: theme.colors.accent,
           fontWeight: 700,
           textTransform: "uppercase",
-          marginBottom: 16,
+          marginBottom: theme.spacing.sm,
         }}
       >
         {title}

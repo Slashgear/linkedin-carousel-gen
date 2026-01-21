@@ -1,13 +1,15 @@
 {
   "name": "linkekin-carousel-gen",
   "type": "module",
-  "module": "index.ts",
+  "module": "index.tsx",
   "scripts": {
-    "generate": "bun run index.ts",
+    "generate": "bun run index.tsx",
     "typecheck": "tsc --noEmit",
     "lint": "oxlint",
     "format": "oxfmt --write .",
-    "format:check": "oxfmt --check ."
+    "format:check": "oxfmt --check .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o storybook-static"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",
@@ -17,9 +19,15 @@
     "satori": "^0.19.1"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.5",
+    "@storybook/blocks": "^8.5",
+    "@storybook/react": "^8.5",
+    "@storybook/react-vite": "^8.5",
     "@types/bun": "latest",
     "oxfmt": "^0.26.0",
     "oxlint": "^1.41.0",
-    "typescript": "^5.9.3"
+    "storybook": "^8.5",
+    "typescript": "^5.9.3",
+    "vite": "^6"
   }
 }

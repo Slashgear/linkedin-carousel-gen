@@ -1,0 +1,56 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introduction" />
+
+# LinkedIn Carousel Generator
+
+A React + Satori-based tool for generating LinkedIn carousel posts as PDFs.
+
+## Features
+
+- **Theme System**: 7 built-in themes (dark, light, blue, green, red, purple, orange)
+- **12 Generic Slides**: Reusable slide components for common carousel patterns
+- **Satori Compatible**: All components use flexbox-only CSS for Satori compatibility
+
+## Quick Start
+
+```tsx
+import { CoverSlide } from "./src/slides/generic";
+import { lightTheme } from "./src/theme";
+
+<CoverSlide
+  theme={lightTheme}
+  title="My Amazing Title"
+  badge="TIPS"
+  subtitle="A subtitle for context"
+/>;
+```
+
+## Available Themes
+
+- **darkTheme** - Dark background with yellow accent (default)
+- **lightTheme** - Light background with blue accent
+- **blueTheme** - Dark blue background with bright blue accent
+- **greenTheme** - Dark green background with emerald accent
+- **redTheme** - Dark background with red accent
+- **purpleTheme** - Dark purple background with violet accent
+- **orangeTheme** - Dark background with orange accent
+
+## Available Slides
+
+1. **CoverSlide** - Hook/title slide with optional background image
+2. **ProblemSlide** - List of pain points with icons
+3. **SolutionSlide** - Features with vertical/grid layout
+4. **ListSlide** - Numbered or bulleted list
+5. **QuoteSlide** - Citation with author avatar
+6. **StatsSlide** - Metrics in row or grid layout
+7. **ComparisonSlide** - Before/after or VS comparison
+8. **ProcessSlide** - Steps with visual connectors
+9. **ChecklistSlide** - Styled checklist
+10. **CTASlide** - Call-to-action finale
+11. **ImageTextSlide** - Full image with text overlay
+12. **ProfileSlide** - Author profile card
+
+## Output
+
+Generated PDFs are stored in `out/`. Slides are 1080x1080px (LinkedIn carousel format).
