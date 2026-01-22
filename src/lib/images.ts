@@ -81,3 +81,19 @@ export async function getPlaceholder(name: keyof typeof placeholders): Promise<s
 export function getPlaceholderSync(name: keyof typeof placeholders): string {
   return loadImageAsDataUrlSync(placeholders[name]);
 }
+
+/**
+ * Load an image from a URL and convert it to a base64 data URL
+ */
+export async function loadImageFromUrl(url: string): Promise<string> {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch image: ${url}`);
+  }
+
+  const buffer = await response.arrayBuffer();
+  const base64 = Buffer.from(buffer).toString("base64");
+
+  const contentType = response.headers.get("content-type") || "image/png";
+  return `data:${contentType};base64,${base64}`;
+}
