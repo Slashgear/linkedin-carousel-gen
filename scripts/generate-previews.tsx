@@ -2,7 +2,15 @@
  * Generate PNG previews of example carousels for README
  */
 import { renderSlideToPng } from "../src/lib/render";
-import { Slide, Title, Subtitle, Badge, CheckItem, CTABox, StatBox } from "../src/slides/components";
+import {
+  Slide,
+  Title,
+  Subtitle,
+  Badge,
+  CheckItem,
+  CTABox,
+  StatBox,
+} from "../src/slides/components";
 import { blueTheme, greenTheme, purpleTheme } from "../src/theme";
 
 // Tips carousel - first slide

@@ -107,11 +107,11 @@ const slides = [
 
 Ready-to-run example carousels in the `examples/` folder:
 
-| Example                                           | Description                   | Theme  | PDF                                                                                               |
-| ------------------------------------------------- | ----------------------------- | ------ | ------------------------------------------------------------------------------------------------- |
-| [tips-carousel.tsx](examples/tips-carousel.tsx)   | Tips/guide style carousel     | Blue   | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/tips-carousel.pdf)         |
-| [product-launch.tsx](examples/product-launch.tsx) | Product announcement carousel | Green  | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/product-launch.pdf)        |
-| [event-promo.tsx](examples/event-promo.tsx)       | Event promotion carousel      | Purple | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/event-promo.pdf)           |
+| Example                                           | Description                   | Theme  | PDF                                                                                        |
+| ------------------------------------------------- | ----------------------------- | ------ | ------------------------------------------------------------------------------------------ |
+| [tips-carousel.tsx](examples/tips-carousel.tsx)   | Tips/guide style carousel     | Blue   | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/tips-carousel.pdf)  |
+| [product-launch.tsx](examples/product-launch.tsx) | Product announcement carousel | Green  | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/product-launch.pdf) |
+| [event-promo.tsx](examples/event-promo.tsx)       | Event promotion carousel      | Purple | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/event-promo.pdf)    |
 
 Run an example:
 
@@ -144,15 +144,15 @@ bun run format       # Format code with oxfmt
 
 For custom layouts, use the base components from `src/slides/components`:
 
-| Component   | Props                                          | Description                          |
-| ----------- | ---------------------------------------------- | ------------------------------------ |
-| `Slide`     | `theme`, `style`, `children`                   | Base container (1080x1080px)         |
-| `Badge`     | `theme`, `style`, `children`                   | Colored label/tag                    |
-| `Title`     | `theme`, `style`, `children`, `highlight?`     | Main heading with optional highlight |
-| `Subtitle`  | `theme`, `style`, `children`                   | Secondary text                       |
-| `StatBox`   | `theme`, `style`, `value`, `label`             | Metric display box                   |
-| `CheckItem` | `theme`, `children`, `highlight?`              | Checklist item with checkmark        |
-| `CTABox`    | `theme`, `style`, `title`, `url`               | Call-to-action box                   |
+| Component   | Props                                      | Description                          |
+| ----------- | ------------------------------------------ | ------------------------------------ |
+| `Slide`     | `theme`, `style`, `children`               | Base container (1080x1080px)         |
+| `Badge`     | `theme`, `style`, `children`               | Colored label/tag                    |
+| `Title`     | `theme`, `style`, `children`, `highlight?` | Main heading with optional highlight |
+| `Subtitle`  | `theme`, `style`, `children`               | Secondary text                       |
+| `StatBox`   | `theme`, `style`, `value`, `label`         | Metric display box                   |
+| `CheckItem` | `theme`, `children`, `highlight?`          | Checklist item with checkmark        |
+| `CTABox`    | `theme`, `style`, `title`, `url`           | Call-to-action box                   |
 
 Example:
 
@@ -168,7 +168,7 @@ import { purpleTheme } from "./src/theme";
   <CheckItem theme={purpleTheme} highlight="tests">
     Write tests first
   </CheckItem>
-</Slide>
+</Slide>;
 ```
 
 ## Documentation
