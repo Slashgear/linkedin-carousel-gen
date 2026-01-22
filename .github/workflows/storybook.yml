@@ -29,8 +29,19 @@ jobs:
       - name: Install dependencies
         run: bun install
 
+      - name: Generate example carousels
+        run: |
+          bun run examples/tips-carousel.tsx
+          bun run examples/product-launch.tsx
+          bun run examples/event-promo.tsx
+
       - name: Build Storybook
         run: bun run build-storybook
+
+      - name: Copy PDFs to Storybook static
+        run: |
+          mkdir -p storybook-static/downloads
+          cp out/*.pdf storybook-static/downloads/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
