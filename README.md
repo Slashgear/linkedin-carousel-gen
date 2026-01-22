@@ -98,11 +98,11 @@ const slides = [
 
 Ready-to-run example carousels in the `examples/` folder:
 
-| Example                                           | Description                   | Theme  |
-| ------------------------------------------------- | ----------------------------- | ------ |
-| [tips-carousel.tsx](examples/tips-carousel.tsx)   | Tips/guide style carousel     | Blue   |
-| [product-launch.tsx](examples/product-launch.tsx) | Product announcement carousel | Green  |
-| [event-promo.tsx](examples/event-promo.tsx)       | Event promotion carousel      | Purple |
+| Example                                           | Description                   | Theme  | PDF                                                                                               |
+| ------------------------------------------------- | ----------------------------- | ------ | ------------------------------------------------------------------------------------------------- |
+| [tips-carousel.tsx](examples/tips-carousel.tsx)   | Tips/guide style carousel     | Blue   | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/tips-carousel.pdf)         |
+| [product-launch.tsx](examples/product-launch.tsx) | Product announcement carousel | Green  | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/product-launch.pdf)        |
+| [event-promo.tsx](examples/event-promo.tsx)       | Event promotion carousel      | Purple | [Download](https://slashgear.github.io/linkedin-carousel-gen/downloads/event-promo.pdf)           |
 
 Run an example:
 
