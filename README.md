@@ -2,8 +2,17 @@
 
 [![CI](https://github.com/Slashgear/linkedin-carousel-gen/actions/workflows/ci.yml/badge.svg)](https://github.com/Slashgear/linkedin-carousel-gen/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Storybook](https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white)](https://slashgear.github.io/linkedin-carousel-gen/)
 
 Tool to generate LinkedIn carousel posts as PDFs. Built with TypeScript, Bun, React and Satori.
+
+<p align="center">
+  <img src="assets/previews/tips-carousel.png" width="250" alt="Tips Carousel" />
+  <img src="assets/previews/product-launch.png" width="250" alt="Product Launch" />
+  <img src="assets/previews/event-promo.png" width="250" alt="Event Promo" />
+</p>
+
+**[View Storybook Demo](https://slashgear.github.io/linkedin-carousel-gen/)** | **[Download Example PDFs](https://slashgear.github.io/linkedin-carousel-gen/?path=/docs/galleries-tips-carousel--docs)**
 
 ## Features
 
@@ -131,10 +140,42 @@ bun run lint         # Run oxlint
 bun run format       # Format code with oxfmt
 ```
 
+## Base Components API
+
+For custom layouts, use the base components from `src/slides/components`:
+
+| Component   | Props                                          | Description                          |
+| ----------- | ---------------------------------------------- | ------------------------------------ |
+| `Slide`     | `theme`, `style`, `children`                   | Base container (1080x1080px)         |
+| `Badge`     | `theme`, `style`, `children`                   | Colored label/tag                    |
+| `Title`     | `theme`, `style`, `children`, `highlight?`     | Main heading with optional highlight |
+| `Subtitle`  | `theme`, `style`, `children`                   | Secondary text                       |
+| `StatBox`   | `theme`, `style`, `value`, `label`             | Metric display box                   |
+| `CheckItem` | `theme`, `children`, `highlight?`              | Checklist item with checkmark        |
+| `CTABox`    | `theme`, `style`, `title`, `url`               | Call-to-action box                   |
+
+Example:
+
+```tsx
+import { Slide, Title, Badge, CheckItem } from "./src/slides/components";
+import { purpleTheme } from "./src/theme";
+
+<Slide theme={purpleTheme}>
+  <Badge theme={purpleTheme}>PRO TIP</Badge>
+  <Title theme={purpleTheme} highlight="faster">
+    Ship code faster
+  </Title>
+  <CheckItem theme={purpleTheme} highlight="tests">
+    Write tests first
+  </CheckItem>
+</Slide>
+```
+
 ## Documentation
 
 - [Usage Guide](docs/USAGE.md) - Detailed usage instructions
 - [Themes Guide](docs/THEMES.md) - Theme customization
+- [Contributing](CONTRIBUTING.md) - How to contribute
 
 ## License
 
