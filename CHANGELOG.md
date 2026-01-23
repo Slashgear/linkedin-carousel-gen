@@ -1,5 +1,11 @@
 # @slashgear/linkedin-carousel-gen
 
+## 0.1.1
+
+### Patch Changes
+
+- 66a47fe: Use .prettierignore instead of .oxfmtignore to ignore CHANGELOG.md in formatter
+
 ## 0.1.0
 
 ### Minor Changes
