@@ -34,8 +34,55 @@ Please ensure:
 
 1. Update documentation if needed
 2. Add/update Storybook stories for UI changes
-3. Ensure CI passes
-4. Request review from maintainers
+3. **Add a changeset** (see below)
+4. Ensure CI passes
+5. Request review from maintainers
+
+## Changesets and Releases
+
+This project uses [Changesets](https://github.com/changesets/changesets) to manage versions and changelogs.
+
+### Adding a Changeset
+
+When you make a change that should be released, add a changeset:
+
+```bash
+bunx changeset
+```
+
+You'll be prompted to:
+
+1. Select the type of change: `patch` (bug fix), `minor` (new feature), or `major` (breaking change)
+2. Write a summary of your changes (this will appear in the changelog)
+
+This creates a markdown file in `.changeset/` describing your change.
+
+### What Happens on Merge
+
+When your PR is merged to `main`:
+
+1. The release workflow detects the changeset
+2. A "Version Packages" PR is automatically created/updated
+3. When maintainers merge the Version PR:
+   - The version is bumped
+   - CHANGELOG.md is updated
+   - The package is published to GitHub Packages
+   - A GitHub Release is created
+
+### When to Add a Changeset
+
+Add a changeset for:
+
+- New features
+- Bug fixes
+- Breaking changes
+- Dependency updates that affect users
+
+Skip changesets for:
+
+- Documentation-only changes
+- Internal refactors with no user impact
+- CI/tooling changes
 
 ## Adding New Slides
 

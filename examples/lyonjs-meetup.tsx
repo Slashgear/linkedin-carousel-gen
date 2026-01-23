@@ -13,10 +13,10 @@ const theme = darkTheme;
 const [logoLyonJS, photoChafik, photoMatthias, bg1, bg2, bg3] = await Promise.all([
   loadImageFromUrl("https://www.lyonjs.org/lyonjs.png"),
   loadImageFromUrl(
-    "https://media.licdn.com/dms/image/v2/D4E03AQFDKlP3tcrWZg/profile-displayphoto-shrink_800_800/B4EZcbFG2HHsAc-/0/1748506013514?e=1770854400&v=beta&t=ivYI6zcAt0BuyzTRiSKrKM06ZvlMZN8aZl0OebK1Zps"
+    "https://media.licdn.com/dms/image/v2/D4E03AQFDKlP3tcrWZg/profile-displayphoto-shrink_800_800/B4EZcbFG2HHsAc-/0/1748506013514?e=1770854400&v=beta&t=ivYI6zcAt0BuyzTRiSKrKM06ZvlMZN8aZl0OebK1Zps",
   ),
   loadImageFromUrl(
-    "https://media.licdn.com/dms/image/v2/D4D03AQGqX7FUf7XgwA/profile-displayphoto-crop_800_800/B4DZvqN6K.GcAI-/0/1769161073807?e=1770854400&v=beta&t=7kTUeJX91lsiSEoxhr8fr9K-SChSYDKaLP3KzTXqRiY"
+    "https://media.licdn.com/dms/image/v2/D4D03AQGqX7FUf7XgwA/profile-displayphoto-crop_800_800/B4DZvqN6K.GcAI-/0/1769161073807?e=1770854400&v=beta&t=7kTUeJX91lsiSEoxhr8fr9K-SChSYDKaLP3KzTXqRiY",
   ),
   loadImageFromUrl("https://www.lyonjs.org/lyonjs100/lyonJS3.jpg"),
   loadImageFromUrl("https://www.lyonjs.org/lyonjs100/lyonJS5.jpg"),
