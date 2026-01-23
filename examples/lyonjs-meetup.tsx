@@ -2,7 +2,7 @@
  * Example: LyonJS Meetup Carousel
  * Announce a local tech meetup event
  */
-import { renderSlidesToPdf } from "../src/lib/render";
+import { renderSlidesToPdf, renderSlideToPng } from "../src/lib/render";
 import { loadImageFromUrl } from "../src/lib/images";
 import { Slide, Title, Subtitle, Badge, StatBox, CTABox } from "../src/slides/components";
 import { darkTheme } from "../src/theme";
@@ -13,10 +13,10 @@ const theme = darkTheme;
 const [logoLyonJS, photoChafik, photoMatthias, bg1, bg2, bg3] = await Promise.all([
   loadImageFromUrl("https://www.lyonjs.org/lyonjs.png"),
   loadImageFromUrl(
-    "https://media.licdn.com/dms/image/v2/D4E03AQFDKlP3tcrWZg/profile-displayphoto-shrink_400_400/B4EZcbFG2HHsAg-/0/1748506013514?e=1770854400&v=beta&t=vwWrhjOvTJ8gIc9dwXWws9zN91bNtyzoOv1g8cx5jDE"
+    "https://media.licdn.com/dms/image/v2/D4E03AQFDKlP3tcrWZg/profile-displayphoto-shrink_800_800/B4EZcbFG2HHsAc-/0/1748506013514?e=1770854400&v=beta&t=ivYI6zcAt0BuyzTRiSKrKM06ZvlMZN8aZl0OebK1Zps"
   ),
   loadImageFromUrl(
-    "https://media.licdn.com/dms/image/v2/D4D03AQFL2HCNWPXIUA/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1710498426008?e=1770854400&v=beta&t=t36dg0Df6W10857NYMdjGQnfotjrT19n5S8Ox0S5fCY"
+    "https://media.licdn.com/dms/image/v2/D4D03AQGqX7FUf7XgwA/profile-displayphoto-crop_800_800/B4DZvqN6K.GcAI-/0/1769161073807?e=1770854400&v=beta&t=7kTUeJX91lsiSEoxhr8fr9K-SChSYDKaLP3KzTXqRiY"
   ),
   loadImageFromUrl("https://www.lyonjs.org/lyonjs100/lyonJS3.jpg"),
   loadImageFromUrl("https://www.lyonjs.org/lyonjs100/lyonJS5.jpg"),
@@ -198,9 +198,6 @@ const slides = [
       height={80}
       style={{ position: "absolute", top: 60, right: 60, objectFit: "contain" }}
     />
-    <Badge theme={theme} style={{ marginBottom: 40 }}>
-      INFOS PRATIQUES
-    </Badge>
     <div
       style={{ display: "flex", gap: 24, justifyContent: "center", flex: 1, alignItems: "center" }}
     >
@@ -250,3 +247,12 @@ console.log("Generating LyonJS meetup carousel...");
 const pdfBytes = await renderSlidesToPdf(slides);
 await Bun.write(outputPath, pdfBytes);
 console.log(`Saved to ${outputPath}`);
+
+// Generate PNG images
+console.log("Generating PNG slides...");
+for (let i = 0; i < slides.length; i++) {
+  const pngBytes = await renderSlideToPng(slides[i]);
+  const pngPath = `out/lyonjs-meetup-${i + 1}.png`;
+  await Bun.write(pngPath, pngBytes);
+  console.log(`Saved to ${pngPath}`);
+}

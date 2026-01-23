@@ -7,7 +7,7 @@ This guide covers how to create LinkedIn carousels using the slide components.
 A carousel is an array of React components that get rendered to a PDF:
 
 ```tsx
-import { renderSlidesToPdf } from "./src/lib/render";
+import { renderSlidesToPdf, renderSlideToPng } from "./src/lib/render";
 import { CoverSlide, CTASlide } from "./src/slides/generic";
 import { darkTheme } from "./src/theme";
 
@@ -16,8 +16,15 @@ const slides = [
   <CTASlide theme={darkTheme} title="Follow me!" ctaLabel="Link" ctaUrl="example.com" />,
 ];
 
+// Generate PDF
 const pdfBytes = await renderSlidesToPdf(slides);
 await Bun.write("out/carousel.pdf", pdfBytes);
+
+// Generate individual PNG images (optional)
+for (let i = 0; i < slides.length; i++) {
+  const pngBytes = await renderSlideToPng(slides[i]);
+  await Bun.write(`out/slide-${i + 1}.png`, pngBytes);
+}
 ```
 
 ## Slide Components

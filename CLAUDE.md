@@ -87,4 +87,6 @@ import { greenTheme } from "./src/theme";
 
 ## Output
 
-Generated PDFs are stored in `out/`. Slides are 1080x1080px (LinkedIn carousel format).
+Generated PDFs and PNGs are stored in `out/`. Slides are 1080x1080px (LinkedIn carousel format).
+
+Use `renderSlidesToPdf(slides)` for PDF output and `renderSlideToPng(slide)` for individual PNG images.
