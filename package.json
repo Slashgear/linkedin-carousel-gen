@@ -1,6 +1,6 @@
 {
   "name": "@slashgear/linkedin-carousel-gen",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generate LinkedIn carousel posts as PDFs using React + Satori",
   "keywords": [
     "carousel",
