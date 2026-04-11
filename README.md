@@ -119,6 +119,63 @@ Run an example:
 bun run examples/tips-carousel.tsx
 ```
 
+### LyonJS Meetup Generator (JSON-driven)
+
+For recurring LyonJS meetups, `scripts/generate-lyonjs-meetup.tsx` produces a carousel from a JSON file instead of hand-edited JSX. Drop a `meetup.json` + the referenced images in a directory and run one command — everything else (layout, theme, logo, backpage CTA) is baked into the script.
+
+1. Create a directory for the edition, e.g. `lyonjs/2026-04-23/`, containing:
+   - `meetup.json` (schema below)
+   - Three backgrounds referenced from the JSON (e.g. `cover.jpeg`, `infos.jpeg`, `backpage.jpg`)
+   - One avatar per speaker (falls back to a placeholder if the file is missing)
+
+2. Write `meetup.json` — the example below is the real `lyonjs/2026-04-23/meetup.json` shipped in this repo:
+
+```json
+{
+  "cover": {
+    "edition": "#113 LYONJS x YEESO (EN MIXITE)",
+    "title": "Loi de Conway, Documentation et Permissions",
+    "date": "Jeudi 23 avril 2026 - 19h00",
+    "background": "cover.jpeg"
+  },
+  "speakers": [
+    {
+      "avatar": "sarah.jpeg",
+      "name": "Sarah Haïm-Lubczanski",
+      "company": "Documentation Architect, Bedrock Streaming",
+      "description": "Loi de Conway et documentation"
+    },
+    {
+      "avatar": "celine.jpeg",
+      "name": "Céline Louvet",
+      "company": "Staff Engineer / Senior Lead Developer, Shine",
+      "description": "Les mystères des permissions"
+    }
+  ],
+  "infos": {
+    "time": "19h00",
+    "seats": 80,
+    "price": "Gratuit",
+    "address": "Wanadev - 13 Quai du Commerce, Lyon",
+    "background": "infos.jpeg"
+  },
+  "backpage": {
+    "description": "Apéro offert par Wanadev",
+    "background": "backpage.jpg"
+  }
+}
+```
+
+All image paths are resolved relative to the directory passed to the script. `speakers` can contain any number of entries — one slide is produced per speaker.
+
+3. Generate the carousel:
+
+```bash
+bun run scripts/generate-lyonjs-meetup.tsx lyonjs/2026-04-23
+```
+
+Output: `out/meetup-lyonjs/2026-04-23/caroussel.pdf` + `page-1.png` … `page-N.png` (one per slide). The output directory mirrors the input path with `meetup-` prepended to the first segment, so every LyonJS edition lands under `out/meetup-lyonjs/`.
+
 ## Stack
 
 - **Bun** - TypeScript runtime

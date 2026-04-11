@@ -1,0 +1,33 @@
+{
+  "cover": {
+    "edition": "#113 LYONJS x YEESO (EN MIXITE)",
+    "title": "Loi de Conway, Documentation et Permissions",
+    "date": "Jeudi 23 avril 2026 - 19h00",
+    "background": "cover.jpeg"
+  },
+  "speakers": [
+    {
+      "avatar": "sarah.jpeg",
+      "name": "Sarah Haïm-Lubczanski",
+      "company": "Documentation Architect, Bedrock Streaming",
+      "description": "Loi de Conway et documentation"
+    },
+    {
+      "avatar": "celine.jpeg",
+      "name": "Céline Louvet",
+      "company": "Staff Engineer / Senior Lead Developer, Shine",
+      "description": "Les mystères des permissions"
+    }
+  ],
+  "infos": {
+    "time": "19h00",
+    "seats": 80,
+    "price": "Gratuit",
+    "address": "Wanadev - 13 Quai du Commerce, Lyon",
+    "background": "infos.jpeg"
+  },
+  "backpage": {
+    "description": "Apéro offert par Wanadev",
+    "background": "backpage.jpg"
+  }
+}
